@@ -1,0 +1,26 @@
+name: DynamisTokens
+version: 1.1.0
+main: mcm.unverified.dynamistokens.DynamisTokens
+author: Unverified
+depend: [Factions]
+commands:
+  tshop:
+    description: Open shop gui.
+    usage: /<command>
+    permission: dynamistokens.commands.shop
+  tgive:
+    description: Give tokens.
+    usage: /<command> <player>
+    permission: dynamistokens.commands.give
+  ttake:
+    description: Take tokens.
+    usage: /<command> <player>'
+    permission: dynamistokens.commands.take
+  tpay:
+    description: Pay players.
+    usage: /<command> <player>
+    permission: dynamistokens.commands.pay
+  tbal:
+    description: Check balance.
+    usage: /<command> <player>
+    permission: dynamistokens.commands.balance

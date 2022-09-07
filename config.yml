@@ -1,0 +1,123 @@
+config:
+#These are the permission nodes for every command in the plugin, Feel free to put these in your permission manager plugin#
+# /TShop - Dynamistokens.commands.shop
+# /TGive <Player> <Amount> - dynamistokens.commands.give
+# /TTake <Player> <Amount> - dynamistokens.commands.take
+# /TPay <Player> <Amount> - dynamistokens.commands.pay
+# /TBal <Player> or /TBal - dynamistokens.commands.balance
+
+#This is where your MySQL credentials will go, You must have a table named tokens and the columns below#
+#uuid | name | tokens#
+#UUID must be the primary key and a varchar, name must  be text and tokens must be an int. Please keep the columns in the order above#
+  mysql:
+    host: localhost
+    port: 3306
+    database: yourDatabaseName
+    username: root
+    password:
+
+#Thse messages will be shown in chat when certain actions, or commands are fired#
+  messages:
+    '0': '&7%player% has paid you %amount%  token(s).'
+    '1': '&7[Bal] &a%amount%'
+    '2': '&7[%player%''s Bal] &a%amount%'
+    '3': '&aYour purchase was successfully confirmed.'
+    '4': '&cYour purchase was canceled.'
+    '5': '&7You''ve successfully paid %player% %amount% token(s).'
+    '6': '&7%amount% token(s) was added to your account.'
+    '7': '&7%amount% token(s) was removed from your account.'
+    '8': '&7You''ve removed %amount% token(s) from %player%''s account.'
+    '9': '&7You''ve added %amount% token(s) to %player%''s account.'
+    '10': '&c%player% has no token(s) to remove.'
+    '11': '&cYou do not have enough token(s). '
+    '12': '&7You''ve gained %amount% tokens(s) for murdering a %mob%'
+    '13': '&7You''ve gained %amount% token(s) for mining %block%'
+
+#These prefixes will show up before the messges, You may config them to your personal preference#
+  misc:
+    error prefix: '&c&lERROR'
+    console prefix: '&8[&6DynamisTokens&8]'
+    shop gui name: '&8[&6ShopGUI&8]'
+    confirmation gui name: '&8[&6Confirmation&8]'
+
+#This is where you would configure what blocks you want players to gain points from, You many configure a min and max tokens that will be given on break. You may use google to look up a website for the block ids for#
+#For certain blocks. The data value will stay at 0 if the blocks has no data value. If you're confused what that is. ex. If you want color stained class, You'll have to specify the data value, 95:8 for light gray and 95:9 for cyan#
+  blocks:
+    iron ore:
+      id: 15
+      data value: 0
+      mined in row: 3
+      min tokens: 3
+      max tokens: 5
+
+#This is where you would configure the amount of tokens a player will get for killing a certain mob. Same as the blocks but just for mobs#
+  mobs:
+    sheep:
+      id: 91
+      murdered in row: 2
+      min tokens: 3
+      max tokens: 5
+
+#This is what you was waiting for. This is the fully customizable gui shop that will be used for spending your hard earned tokens. Please make sure the slot you choose for the category item is between 9 - 17#
+#Or it might cause problems with the code. You can specify categories for each type of item you'll like to sell#
+  shop:
+    inventories:
+
+#This is where you can specify categories for players to click and open a gui of items that players and buy to execute commands, receive enchanted books with the enchantments you specify#
+#And receive items that you specify below  also#
+      weapons:
+#This is where you will customize the display item for players to see, Players will not get this item. This is only for looks#
+        item:
+          id: 267
+          data value: 0
+#WARNING Please make sure the slot number is between 9 - 17 or this may cause problems with the code#
+          slot: 9
+          amount: 1
+          name: '&eWeapons'
+#This is where you can mcl as many enchantments you want to be on the display item. If you don't want any enchantments, Please leave it blank and remove "knockback"#
+          enchantments:
+            knockback:
+              enchantment id: 19
+              enchantment level: 1
+#Once again, You will not receive these items. These are the items will be shown in the weapons category inventory#
+        items:
+          wood sword:
+            id: 272
+            data value: 0
+#Above, I said to keep the slot number between 9 -17 but here, Please keep the slot number between 9 - 44 or it may also cause problems with the code#
+            slot: 10
+            amount: 1
+            price: 100
+            name: '&eStone Sword uh'' A Thousand Baccas'
+            enchantments:
+              knockback:
+                enchantment id: 19
+                enchantment level: 1
+#This is the description for the display item, Here you can specify whats so good about the item and what it has to offer, Please use %price% to display the price of the item in the description if you want to#
+            description:
+            - ''
+            - '&7This is your description'
+            - '&7Price (&e%price%&7)'
+#This is what you've been waiting for, Here you'll have access to specify what commands you will like the server to execute, What items you'll like the players to receive and what kind of enchants will#
+#You like the player to receive#
+            received items:
+#These are the commands that will get executed by the server, Please use %player% to execute the command on the player that clicks the item in the inventory#
+              commands:
+              - 'gamemode 1 %player%'
+#This is where your enchantments that you want the player to receive will go. All enchants will be given to the player with an enchanted book#
+              enchantments:
+                knockback:
+                  enchantment id: 19
+                  enchantment level: 2
+#Here you can specify what items you'll like the player who clicks the item to receive. If you don't want them to receive any items. Please leave his blank and remove "diamond sword" and everything under it#
+              items:
+                diamond sword:
+                  id: 272
+                  data value: 0
+                  amount: 1
+                  name: '&eStone Sword'
+                  enchantments:
+                    knockback:
+                      enchantment id: 19
+                      enchantment level: 2
+#if you're reading this, You're done. I hope you enjoy your plugin and have more fun with it than i had coding it. If you need another plugin. Hit me up. - Unverified
